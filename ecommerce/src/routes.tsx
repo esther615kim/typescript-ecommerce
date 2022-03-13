@@ -1,26 +1,14 @@
+import React, { lazy } from 'react';
 
-import React from 'react';
-
-
-const DynamicLandingPage = React.lazy(() => import('./pages\LandingPage'));
-const DynamicIndex = React.lazy(() => import('./pages\ProductsPage\index'));
-const DynamicId = React.lazy(() => import('./pages\ProductsPage\[id]'));
-
+const Index = React.lazy(() => import('./pages/index'));
+import Layout from './pages/_layout';
 
 export const routes = [
-  {
-    path: '/',
-    element: <Outlet />,
-    children: [
-      { path: 'C:\LandingPage', element: <DynamicLandingPage />, },
-      { path: 'C:\ProductsPage', element: <DynamicIndex />, index: true},
-      { path: 'C:\ProductsPage\:id', element: <DynamicId />, },
-    ]
-  }
-]
+    {
+        path: '/',
+        element: <Layout />,
+        children: [{ path: 'C:/', element: <Index />, index: true }],
+    },
+];
 
-export const pages = [
-  { route: 'C:\LandingPage' },
-  { route: 'C:\ProductsPage' },
-  { route: 'C:\ProductsPage\:id' },
-]
+export const pages = [{ route: 'C:/' }];
